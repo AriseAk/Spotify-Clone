@@ -1,6 +1,7 @@
 console.log("Sup mfs")
 
 let currentsong = new Audio();
+let songs;
 
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
@@ -47,7 +48,7 @@ const playsongs = (track,pause=false) => {
 
 async function main() {
 
-    let songs = await getsongs()
+    songs = await getsongs()
     playsongs(songs[0],true)
 
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
@@ -84,8 +85,8 @@ async function main() {
 
     currentsong.addEventListener("timeupdate",()=>{
         console.log(currentsong.currentTime,currentsong.duration);
-        document.querySelector(".songtime").innerHTML=`${secondsToMinutesSeconds(currentsong.currentTime)}:
-        ${secondsToMinutesSeconds(currentsong.duration)}`
+        document.querySelector(".songtime").innerHTML=`${secondsToMinutesSeconds(currentsong.currentTime)} :
+         ${secondsToMinutesSeconds(currentsong.duration)}`
         document.querySelector(".circle").style.left=(currentsong.currentTime/currentsong.duration)*100 + "%";
     })
 
@@ -95,7 +96,41 @@ async function main() {
         currentsong.currentTime=((currentsong.duration)*percent)/100
     })
 
+    document.querySelector(".hamburger").addEventListener("click",()=>{
+        document.querySelector(".left").style.left="0"
+    })
 
+    document.querySelector(".close").addEventListener("click",()=>{
+        document.querySelector(".left").style.left="-130%"
+    })
+
+    previous.addEventListener("click", () => {
+        currentsong.pause()
+        console.log("Previous clicked")
+        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0])
+        if ((index - 1) >= 0) {
+            playsongs(songs[index - 1])
+        }
+    })
+
+    // Add an event listener to next
+    next.addEventListener("click", () => {
+        currentsong.pause()
+        console.log("Next clicked")
+
+        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0])
+        if ((index + 1) < songs.length) {
+            playsongs(songs[index + 1])
+        }
+    })
+
+    document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change", (e) => {
+        console.log("Setting volume to", e.target.value, "/ 100")
+        currentsong.volume = parseInt(e.target.value) / 100
+        if (currentsong.volume >0){
+            document.querySelector(".volume>img").src = document.querySelector(".volume>img").src.replace("mute.svg", "volume.svg")
+        }
+    })
 }
 
 main()

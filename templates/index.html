@@ -12,8 +12,11 @@
 <body>
     <div class="container flex black">
         <div class="left  ">
+            <div class="close">
+                <img width="30" class="invert" src="/images/close.svg" alt="">
+            </div>
             <div class="home grey rounded m-1 p-1">
-                <div class="logo"><img class="invert" src="/images/logo.svg" alt=""></div>
+                <div class="logo"><img width="120" class="invert" src="/images/logo.svg" alt=""></div>
                 <ul>
                     <li><img class="invert" src="/images/home.svg" alt="Home">Home</li>
                     <li><img class="invert" src="/images/search.svg" alt="Search">Search</li>
@@ -68,7 +71,7 @@
             </div>
             <div class="spotify">
                 <h1>Spotify Playlists</h1>
-                <div class="cardconainer">
+                <div class="cardcontainer">
                     <div class="playbar">
                         <div class="seekbar">
                             <div class="circle">
@@ -82,7 +85,16 @@
                                 <img width="35" id="play" src="/images/play.svg" alt="">
                                 <img width="35" id="next" src="/images/nextsong.svg" alt="">
                             </div>
-                            <div class="songtime"></div>
+                            <div class="timevol">
+                                <div class="songtime"></div>
+                                <div class="volume">
+                                    <img src="/images/volume.svg" alt="">
+                                    <div class="range">
+                                        <input type="range" name="volume" id="">
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
