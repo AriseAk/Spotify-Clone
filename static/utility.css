@@ -1,0 +1,21 @@
+.border{
+    border: 2px solid white;
+    margin: 3px;
+}
+
+.flex{
+    display: flex;
+}
+
+.justify{
+    justify-content: center;
+}
+
+.items-center{
+    align-items: center;
+}
+
+.rounded{
+    border-radius: 5px;
+}
+
