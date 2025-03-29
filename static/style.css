@@ -273,12 +273,13 @@ body {
     cursor: pointer;
 }
 
-.songinfo, .songtime{
+.songinfo,
+.songtime {
     color: black;
     padding: 0 12px;
 }
 
-.abovebar{
+.abovebar {
     width: 80vw;
     display: flex;
     justify-content: space-around;
