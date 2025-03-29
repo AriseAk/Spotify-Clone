@@ -1,21 +1,20 @@
-.border{
+.border {
     border: 2px solid white;
     margin: 3px;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
-.justify{
+.justify {
     justify-content: center;
 }
 
-.items-center{
+.items-center {
     align-items: center;
 }
 
-.rounded{
+.rounded {
     border-radius: 5px;
 }
-
