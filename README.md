@@ -56,7 +56,6 @@ This project is deployed using Netlify. To deploy your own version:
 1. Create a Netlify account at [netlify.com](https://www.netlify.com/).
 2. Connect your GitHub repository or manually upload the project files.
 3. Netlify will generate a deployment URL for your project.
-4. Replace `<YOUR_NETLIFY_LINK>` in this README with your actual deployment URL.
 
 ## License
 
