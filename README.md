@@ -42,7 +42,7 @@ https://67e8e9ca33ef5fd6ce3ed1e9--spotify-cloneak.netlify.app/
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/your-username/spotify-clone.git
+   git clone https://github.com/AriseAk/spotify-clone.git
    ```
 
 2. Navigate to the project folder:
