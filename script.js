@@ -21,45 +21,37 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getsongs(folder) {
     currFolder = folder;
-    let a = await fetch(`/${folder}/`)
-    let response = await a.text();
-    let div = document.createElement("div")
-    div.innerHTML = response;
-    let as = div.getElementsByTagName("a")
-    songs = []
-    for (let index = 0; index < as.length; index++) {
-        const element = as[index];
-        if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`/${folder}/`)[1])
-        }
-    }
- 
+    let response = await fetch(`${folder}/info.json`);
+    let data = await response.json();
+    songs = data.songs; // Get song list from JSON
 
+    let songUL = document.querySelector(".songlist ul");
+    songUL.innerHTML = "";
 
-    // Show all the songs in the playlist
-    let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
-    songUL.innerHTML = ""
     for (const song of songs) {
-        songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" width="34" src="images/music.svg" alt="">
-                            <div class="info">
-                                <div> ${song.replaceAll("%20", " ")}</div>
-                            </div>
-                            <div class="playnow">
-                                <span>Play Now</span>
-                                <img class="invert" src="images/play.svg" alt="">
-                            </div> </li>`;
+        songUL.innerHTML += `
+            <li>
+                <img class="invert" width="34" src="images/music.svg" alt="">
+                <div class="info">
+                    <div>${song.replaceAll("%20", " ")}</div>
+                </div>
+                <div class="playnow">
+                    <span>Play Now</span>
+                    <img class="invert" src="images/play.svg" alt="">
+                </div>
+            </li>`;
     }
 
-    // Attach an event listener to each song
-    Array.from(document.querySelector(".songlist").getElementsByTagName("li")).forEach(e => {
-        e.addEventListener("click", element => {
-            playsongs(e.querySelector(".info").firstElementChild.innerHTML.trim())
+    // Attach event listeners to play songs
+    document.querySelectorAll(".songlist li").forEach(e => {
+        e.addEventListener("click", () => {
+            playsongs(e.querySelector(".info").textContent.trim());
+        });
+    });
 
-        })
-    })
-
-    return songs
+    return songs;
 }
+
 
 const playsongs = (track,pause=false) => {
     currentsong.src = `/${currFolder}/` + track
@@ -72,47 +64,41 @@ const playsongs = (track,pause=false) => {
 }
 
 async function displayAlbums() {
-    console.log("displaying albums")
-    let a = await fetch(`songs/`)
-    let response = await a.text();
-    let div = document.createElement("div")
-    div.innerHTML = response;
-    let anchors = div.getElementsByTagName("a")
-    let cardcontainer = document.querySelector(".cardcontainer")
-    let array = Array.from(anchors)
-    for (let index = 0; index < array.length; index++) {
-        const e = array[index]; 
-        if (e.href.includes("/songs") && !e.href.includes(".htaccess")) {
-            let folder = e.href.split("/").slice(-2)[0]
-            // Get the metadata of the folder
-            let a = await fetch(`songs/${folder}/info.json`)
-            let response = await a.json(); 
-            cardcontainer.innerHTML = cardcontainer.innerHTML + ` <div data-folder="${folder}" class="card">
-            <div class="play">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" fill="#000" stroke-width="1.5"
-                        stroke-linejoin="round" />
-                </svg>
+    console.log("Displaying albums...");
+    
+    let response = await fetch("songs/index.json"); // Fetch album list
+    let data = await response.json();
+    
+    let cardContainer = document.querySelector(".cardcontainer");
+    cardContainer.innerHTML = ""; // Clear existing content
+    
+    for (let album of data.albums) {
+        cardContainer.innerHTML += `
+            <div data-folder="${album.folder}" class="card">
+                <div class="play">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 20V4L19 12L5 20Z" stroke="#141B34" fill="#000" stroke-width="1.5"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <img src="songs/${album.folder}/cover.jpg" alt="${album.title}">
+                <h2>${album.title}</h2>
+                <p>${album.description}</p>
             </div>
-
-            <img src="songs/${folder}/cover.jpg" alt="">
-            <h2>${response.title}</h2>
-            <p>${response.description}</p>
-        </div>`
-        }
+        `;
     }
 
-    // Load the playlist whenever card is clicked
-    Array.from(document.getElementsByClassName("card")).forEach(e => { 
-        e.addEventListener("click", async item => {
-            console.log("Fetching Songs")
-            songs = await getsongs(`songs/${item.currentTarget.dataset.folder}`)  
-            playsongs(songs[0])
-
-        })
-    })
+    // Load playlist when clicking an album card
+    document.querySelectorAll(".card").forEach(e => {
+        e.addEventListener("click", async () => {
+            console.log(`Fetching Songs from ${e.dataset.folder}`);
+            songs = await getsongs(`songs/${e.dataset.folder}`);
+            playsongs(songs[0]);
+        });
+    });
 }
+
 
 
 async function main() {

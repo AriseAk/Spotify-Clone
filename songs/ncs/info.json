@@ -1,4 +1,17 @@
 {
-    "title": "Sleep Songs",
-    "description": "Songs for you"
+    "title": "NCS Album",
+    "description": "A collection of NCS songs",
+    "songs": [
+        "amalgam.mp3",
+        "better-day.mp3",
+        "dont-talk.mp3",
+        "drive-breakbeat.mp3",
+        "flow.mp3",
+        "gorila.mp3",
+        "movement.mp3",
+        "night-detective.mp3",
+        "nightfall.mp3",
+        "once-in-paris.mp3",
+        "perfect-beauty.mp3"
+    ]
 }

@@ -1,4 +1,9 @@
 {
-    "title": "Random Songs",
-    "description": "Songs for vibing"
+    "title": "Random songs",
+    "description": "Songs for vibing",
+    "songs": [
+        "science-documentary.mp3",
+        "titanium.mp3"
+        
+    ]
 }

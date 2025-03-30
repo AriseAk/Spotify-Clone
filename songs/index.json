@@ -1,0 +1,14 @@
+{
+    "albums": [
+        {
+            "folder": "ncs",
+            "title": "NCS Album",
+            "description": "A collection of NCS songs"
+        },
+        {
+            "folder": "lofi",
+            "title": "Lofi Beats",
+            "description": "Relaxing Lofi music"
+        }
+    ]
+}
