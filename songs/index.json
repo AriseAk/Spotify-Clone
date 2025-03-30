@@ -13,12 +13,22 @@
         {
             "folder": "cinematic",
             "title": "Cinematic",
-            "description": "Powerful and epic songs"
+            "description": "Epic and powerful music"
         },
         {
             "folder": "beats",
             "title": "Beat-Aesthetics",
             "description": "Thrilling Masterpieces"
+        },
+        {
+            "folder": "dark",
+            "title": "Dark",
+            "description": "Dark music just for you"
+        },
+        {
+            "folder": "chill",
+            "title": "Chill",
+            "description": "Relax and chill with these beauties"
         }
     ]
 }
