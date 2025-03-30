@@ -8,7 +8,6 @@ You can check out the live version of the project here:
 
 https://spotify-cloneak.netlify.app/
 
-https://67e8e9ca33ef5fd6ce3ed1e9--spotify-cloneak.netlify.app/
 
 ## Features
 
