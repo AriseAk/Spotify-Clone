@@ -40,13 +40,13 @@ async function getsongs(folder) {
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     songUL.innerHTML = ""
     for (const song of songs) {
-        songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" width="34" src="/images/music.svg" alt="">
+        songUL.innerHTML = songUL.innerHTML + `<li><img class="invert" width="34" src="images/music.svg" alt="">
                             <div class="info">
                                 <div> ${song.replaceAll("%20", " ")}</div>
                             </div>
                             <div class="playnow">
                                 <span>Play Now</span>
-                                <img class="invert" src="/images/play.svg" alt="">
+                                <img class="invert" src="images/play.svg" alt="">
                             </div> </li>`;
     }
 
@@ -65,7 +65,7 @@ const playsongs = (track,pause=false) => {
     currentsong.src = `/${currFolder}/` + track
     if(!pause){
         currentsong.play()
-        play.src = "/images/pause.svg"
+        play.src = "images/pause.svg"
     }
     document.querySelector(".songinfo").innerHTML = decodeURI(track)
     document.querySelector(".songtime").innerHTML = "00.00/00.00"
@@ -73,7 +73,7 @@ const playsongs = (track,pause=false) => {
 
 async function displayAlbums() {
     console.log("displaying albums")
-    let a = await fetch(`/songs/`)
+    let a = await fetch(`songs/`)
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -85,7 +85,7 @@ async function displayAlbums() {
         if (e.href.includes("/songs") && !e.href.includes(".htaccess")) {
             let folder = e.href.split("/").slice(-2)[0]
             // Get the metadata of the folder
-            let a = await fetch(`/songs/${folder}/info.json`)
+            let a = await fetch(`songs/${folder}/info.json`)
             let response = await a.json(); 
             cardcontainer.innerHTML = cardcontainer.innerHTML + ` <div data-folder="${folder}" class="card">
             <div class="play">
@@ -96,7 +96,7 @@ async function displayAlbums() {
                 </svg>
             </div>
 
-            <img src="/songs/${folder}/cover.jpg" alt="">
+            <img src="songs/${folder}/cover.jpg" alt="">
             <h2>${response.title}</h2>
             <p>${response.description}</p>
         </div>`
@@ -127,11 +127,11 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentsong.paused) {
             currentsong.play()
-            play.src = "/images/pause.svg"
+            play.src = "images/pause.svg"
         }
         else {
             currentsong.pause()
-            play.src = "/images/play.svg"
+            play.src = "images/play.svg"
         }
 
     })
