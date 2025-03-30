@@ -9,6 +9,16 @@
             "folder": "random",
             "title": "Random Songs",
             "description": "Songs for vibing"
+        },
+        {
+            "folder": "cinematic",
+            "title": "Cinematic",
+            "description": "Powerful and epic songs"
+        },
+        {
+            "folder": "beats",
+            "title": "Beat-Aesthetics",
+            "description": "Thrilling Masterpieces"
         }
     ]
 }
