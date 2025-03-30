@@ -34,15 +34,15 @@ https://67e8e9ca33ef5fd6ce3ed1e9--spotify-cloneak.netlify.app/
 │── 📄 index.html         # Main HTML file
 │── 📄 style.css          # Main CSS file (handles layout, animations, and responsiveness)
 │── 📄 script.js          # JavaScript file for interactivity
-│── 📂 assets             # Contains images and icons used in the UI
-└── 📂 music              # Stores sample music files (if included)
+│── 📂 images            # Contains images and icons used in the UI
+└── 📂 songs              # Stores sample music files (if included)
 ```
 
 ## Setup & Installation
 
 1. Clone this repository:
    ```sh
-   git clone https://github.com/your-username/spotify-clone.git
+   git clone https://github.com/AriseAk/spotify-clone.git
    ```
 
 2. Navigate to the project folder:
