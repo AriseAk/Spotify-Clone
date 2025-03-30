@@ -5,7 +5,7 @@ This project is a Spotify Clone, designed with HTML, CSS, and JavaScript. It mim
 ## Live Demo
 
 You can check out the live version of the project here:
-[Spotify Clone - Deployed on Netlify]([<YOUR_NETLIFY_LINK>](https://spotify-cloneak.netlify.app/))
+https://spotify-cloneak.netlify.app/
 
 ## Features
 
